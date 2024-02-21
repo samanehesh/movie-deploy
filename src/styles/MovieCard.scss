@@ -1,0 +1,220 @@
+// Importing variables
+@use 'variables' as *;
+
+// Styling for the movie card container
+.movie-card {
+    padding: 2.5% 0;
+    display: flex;
+    flex-direction: column;
+    column-gap: 2.5%;
+    align-items: center;
+    min-width: 345px;
+
+    // Styling for the movie poster image
+    img {
+        width: 85%;
+    }
+
+    // Styling for the movie data section
+    .movie-data {
+        width: 55%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &>* {
+            margin: 0;
+        }
+
+        // Styling for the movie title
+        .movie-title {
+            font-weight: bold;
+            font-size: px;
+        }
+
+        // Styling for the more info button
+        .more-info-button {
+            background-color: $tertiary-color;
+            font-size: 12px;
+            height: 2rem;
+            border: 2px solid $primary-color;
+            border-radius: 1rem;
+            
+            &>* {
+                color: $primary-color;
+            }
+
+            &:hover {
+                background-color: $unselected-color;
+            }
+        }
+
+        // Styling for the release date and rating section
+        .release-rating {
+            display: flex;
+            max-width: 18.5rem;
+
+            &>* {
+                display: flex;
+                flex-direction: column;
+
+                &>* {
+                    margin: 0;
+                }
+            }
+
+            // Styling for the release date and rating labels
+            .release-rating-labels {
+                align-items: flex-start;;
+            }
+
+            // Styling for the release date values and star rating
+            .release-rating-values {
+                align-items: flex-end;
+            }
+        }
+
+        // Styling for the favorite and watchlist buttons
+        .favorite-watchlist {
+            display: flex;
+            justify-content: space-evenly;
+
+            button {
+                width: 30px;
+                height: 30px;
+                display: flex;
+                padding-left: 3px;
+                padding-top: 5px;
+                background-color: transparent;
+                border: none;
+
+                &.plus-sign-button {
+                    padding-left: 0;
+                    padding-top: 3px;
+                }
+
+                // Styling for the heart icon
+                .heart {
+                    position: relative;
+                    width: 20px;
+                    height: 18px;
+
+                    &:before, &:after {
+                        position: absolute;
+                        content: '';
+                        left: 5px;
+                        top: 0;
+                        width: 10.4px;
+                        height: 16px;
+                        background-color: $unselected-color;
+                        border-radius: 5px 5px 0 0;
+                        transform: rotate(-50deg);
+                        transform-origin: 50% 75%;
+                    }
+
+                    &:after {
+                        transform:rotate(50deg);
+                    }
+
+                    &.favorite:before, &.favorite:after {
+                        background-color: $heart-color;
+                    }
+                }
+                
+                // Styling for the plus sign icon
+                .plus-sign {
+                    position: relative;
+                    width: 20px;
+                    height: 18px;
+
+                    &:before, &:after {
+                        position: absolute;
+                        content: '';
+                        width: 20px;
+                        height: 5px;
+                        background-color: $unselected-color;
+                    }
+
+                    &:before {
+                        transform: translate(0, 10px);
+                    }
+
+                    &:after {
+                        transform: rotate(90deg) translate(10px, 0);
+                    }
+
+                    &.watchlist:before, &.watchlist:after {
+                        background-color: $plus-sign-color;
+                    }
+                }
+            }
+        }
+
+        // Styling for the star container
+        .star-container {
+            margin-top: 0.25rem;
+            display: flex;
+            justify-content: flex-end;
+
+            .star {
+                margin: 5px 0;
+                position: relative;
+                display: block;
+                width: 0px;
+                height: 0px;
+                border-right: 10px solid transparent;
+                border-bottom: 7px solid $star-color;
+                border-left: 10px solid transparent;
+                transform: rotate(35deg);
+            }
+    
+            .star:before {
+                border-bottom: 8px solid $star-color;
+                border-left: 3px solid transparent;
+                border-right: 3px solid transparent;
+                position: absolute;
+                height: 0;
+                width: 0;
+                top: -4.5px;
+                left: -6.5px;
+                display: block;
+                content: '';
+                transform: rotate(-35deg);
+            }
+    
+            .star:after {
+                position: absolute;
+                display: block;
+                top: 0.3px;
+                left: -10.5px;
+                width: 0px;
+                height: 0px;
+                border-right: 10px solid transparent;
+                border-bottom: 7px solid $star-color;
+                border-left: 10px solid transparent;
+                transform: rotate(-70deg);
+                content: '';
+            }
+        }
+    }
+}
+
+// Media queries for different screen sizes
+@media (min-width: 400px) {
+    .movie-card {
+        flex-direction: row;
+
+        img {
+            width: 35%;
+            margin-left: 2.5%;
+        }
+    }
+}
+
+@media (min-width: 640px) {
+    .movie-card {
+        min-width: 320px;
+    }
+}
+
